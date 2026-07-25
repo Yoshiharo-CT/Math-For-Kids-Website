@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Math For Kids</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app-container">
+      <!-- Header -->
+
+      <header class="header">
+        <div class="logo">
+          <span class="logo-icon">🧮</span>
+
+          <h1>Math For Kids</h1>
+        </div>
+
+        <p>Learn Math. Have Fun! 🎉</p>
+      </header>
+
+      <!-- Game Screen -->
+
+      <section class="game-screen">
+        <!-- Game Information -->
+
+        <div class="game-info">
+          <div class="info-box">
+            <span>⭐ Score</span>
+
+            <strong> <span id="score">1</span>/10 </strong>
+          </div>
+
+          <div class="info-box">
+            <span>📝 Question</span>
+
+            <strong> <span id="currentQuestion">1</span>/10 </strong>
+          </div>
+        </div>
+
+        <!-- Operation Selection -->
+
+        <div class="operation-section">
+          <h2>Choose Your Math! 🎯</h2>
+
+          <div class="operation-buttons">
+            <button
+              class="operation-btn active"
+              onclick="selectOperation('addition', this)"
+            >
+              ➕
+
+              <span>Addition</span>
+            </button>
+
+            <button
+              class="operation-btn"
+              onclick="selectOperation('subtraction', this)"
+            >
+              ➖
+
+              <span>Subtraction</span>
+            </button>
+
+            <button
+              class="operation-btn"
+              onclick="selectOperation('multiplication', this)"
+            >
+              ✖️
+
+              <span>Multiplication</span>
+            </button>
+
+            <button
+              class="operation-btn"
+              onclick="selectOperation('division', this)"
+            >
+              ➗
+
+              <span>Division</span>
+            </button>
+
+            <button class="operation-btn" onclick="randomizeOperation(this)">
+              ❓
+
+              <span>Randomize</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+
+        <div class="question-card">
+          <p class="question-label">Solve this! 🤔</p>
+
+          <div class="question" id="question">8 + 9 = ?</div>
+
+          <input type="number" id="answerInput" placeholder="Your answer" />
+
+          <button class="check-btn" onclick="checkAnswer()">
+            Check Answer ✅
+          </button>
+
+          <p id="resultMessage" class="result-message">Good luck! 🍀</p>
+        </div>
+
+        <!-- Next Question Button -->
+
+        <button class="next-btn hidden" id="nextBtn" onclick="nextQuestion()">
+          Next Question ➡️
+        </button>
+
+        <!-- Reset Button -->
+
+        <button class="reset-btn" onclick="resetGame()">🔄 Reset Game</button>
+      </section>
+
+      <!-- Final Result Screen -->
+
+      <section class="result-screen hidden" id="resultScreen">
+        <div class="final-card">
+          <div class="trophy">🏆</div>
+
+          <h2>Great Job, Math Star!</h2>
+
+          <p>Your final score is:</p>
+
+          <div class="final-score" id="finalScore">0 / 10</div>
+
+          <p id="finalMessage">Amazing work! 🎉</p>
+
+          <button class="start-btn" onclick="restartGame()">
+            Play Again 🔁
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
