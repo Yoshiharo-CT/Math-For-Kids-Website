@@ -48,6 +48,7 @@ body {
 .header {
     text-align: center;
     margin-bottom: clamp(18px, 3vw, 30px);
+    position: relative;
 }
 
 .logo {
@@ -72,6 +73,39 @@ body {
     color: #777;
     margin-top: 8px;
     font-size: clamp(14px, 2vw, 18px);
+}
+
+/*==========================
+        AUDIO CONTROL 
+===========================*/
+.audio-control {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 10;
+}
+
+.audio-btn {
+    background: #4f46e5;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-btn.muted {
+    color: #94a3b8;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.audio-btn.muted i {
+    opacity: 0.6;
 }
 
 /* ================================
