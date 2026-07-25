@@ -36,6 +36,96 @@ const finalScore = document.getElementById("finalScore");
 
 const finalMessage = document.getElementById("finalMessage");
 
+/*=========================================================
+    BACKGROUND MUSIC
+=========================================================*/
+
+// --- Audio setup ---
+const bgMusic = new Audio("nastelbom-toy-theme-442638.mp3");
+
+// Preload sounds (optional)
+bgMusic.load();
+
+const audioToggle = document.getElementById("audioToggle");
+
+const audioIcon = audioToggle.querySelector("i");
+
+let isMuted = false;
+
+audioToggle.addEventListener("click", function () {
+  if (bgMusic.paused) {
+    bgMusic.play();
+
+    audioIcon.className = "fas fa-volume-up";
+  } else {
+    bgMusic.pause();
+
+    audioIcon.className = "fas fa-volume-mute";
+  }
+});
+
+// Load saved mute state
+const savedMute = localStorage.getItem("mathKids_mute");
+
+if (savedMute !== null) {
+  isMuted = savedMute === "true";
+}
+
+// Start background music after the user's first interaction
+document.addEventListener(
+  "click",
+  function startMusic() {
+    if (!isMuted) {
+      bgMusic.play().catch((error) => {
+        console.log("Audio could not play:", error);
+      });
+    }
+
+    // Run only once
+    document.removeEventListener("click", startMusic);
+  },
+  { once: true },
+);
+
+// Apply mute state
+function applyMuteState() {
+  if (isMuted) {
+    bgMusic.muted = true;
+
+    audioToggle.classList.add("muted");
+
+    audioIcon.className = "fas fa-volume-mute";
+  } else {
+    bgMusic.muted = false;
+
+    audioToggle.classList.remove("muted");
+
+    audioIcon.className = "fas fa-volume-up";
+  }
+
+  localStorage.setItem("mathKids_mute", String(isMuted));
+}
+
+// Toggle music
+audioToggle.addEventListener("click", function (event) {
+  event.stopPropagation();
+
+  isMuted = !isMuted;
+
+  if (isMuted) {
+    bgMusic.pause();
+  } else {
+    bgMusic.play().catch((error) => {
+      console.log("Audio could not play:", error);
+    });
+  }
+
+  applyMuteState();
+});
+
+// Initialize
+applyMuteState();
+
 /* =================================
    RANDOM NUMBER
 ================================= */
