@@ -43,7 +43,10 @@ const finalMessage = document.getElementById("finalMessage");
 // --- Audio setup ---
 const bgMusic = new Audio("nastelbom-toy-theme-442638.mp3");
 
-// Preload sounds (optional)
+// Audio loop
+bgMusic.loop = true;
+
+// Preload sounds 
 bgMusic.load();
 
 const audioToggle = document.getElementById("audioToggle");
